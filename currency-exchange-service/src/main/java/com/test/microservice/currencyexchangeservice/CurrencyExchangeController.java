@@ -28,7 +28,10 @@ public class CurrencyExchangeController {
 //		exchangeValue.setTo(to);
 //		exchangeValue.setConversationMultiple(new BigDecimal(6500));
 //		exchangeValue.setPort(env.getProperty("local.server.port"));
+//		return exchangeValue;
 		
+		ExchangeValue exchangeValue = repository.findByFromAndTo(from, to);
+		exchangeValue.setPort(env.getProperty("local.server.port"));
 		return repository.findByFromAndTo(from, to);
 	}
 }
