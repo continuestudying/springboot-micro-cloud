@@ -53,8 +53,8 @@ public class CurrencyConversationController {
 			@PathVariable String to,
 			@PathVariable BigDecimal quantity) {
 		CurrencyConversationBean bean = feignProxy.getCurrencyConversation(from, to);
+		bean.setQuantity(quantity);
 		bean.setTotalCalculatedAmount(quantity.multiply(bean.getConversationMultiple()));
-		bean.setPort(env.getProperty("local.server.port"));
 		return bean;
 	}
 	
